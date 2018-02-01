@@ -1,8 +1,11 @@
 var gulp = require( 'gulp' ),
-	webpack = require( 'gulp-webpack' ),
+	webpack = require( 'webpack' ),
+	sass = require( 'gulp-sass' ),
+	sourcemaps = require( 'gulp-sourcemaps' ),
+	plumber = require( 'gulp-plumber' ),
 	clean = require( 'gulp-clean' );
 
-gulp.task( 'build', [ 'build-markup', 'build-scripts' ] );
+gulp.task( 'build', [ 'build-markup', 'build-scripts', 'build-styles' ] );
 
 gulp.task( 'build-markup', function(){
 
@@ -13,9 +16,25 @@ gulp.task( 'build-markup', function(){
 
 gulp.task( 'build-scripts', function(){
 	
-	gulp.src( 'src/scripts/app.js' )
-		.pipe( webpack( require( './webpack.config.js' ) ) )
-		.pipe( gulp.dest( 'bin/resources/scripts' ) );
+	webpack( require( './webpack.config.js' ), ( err, stats ) => {
+		if( err ) console.logError( "Webpack", err );
+		console.log( stats.toString() );
+	} );
+
+	// gulp.src( 'src/scripts/main.js' )
+	// 	.pipe( webpack( require( './webpack.config.js' ) ) )
+	// 	.pipe( gulp.dest( 'bin/resources/scripts' ) );
+
+} );
+
+gulp.task( 'build-styles', function(){
+	
+	gulp.src( 'src/styles/app.scss' )
+		.pipe( plumber() )
+		.pipe( sourcemaps.init() )
+		.pipe( sass( { outputStyle : 'compressed' } ) )
+		.pipe( sourcemaps.write( '.' ) )
+		.pipe( gulp.dest( 'bin/resources/styles' ) );
 
 } );
 

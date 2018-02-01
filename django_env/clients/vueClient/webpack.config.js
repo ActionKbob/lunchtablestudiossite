@@ -4,7 +4,7 @@ const 	webpack = require( 'webpack' ),
 
 module.exports = {
 
-	entry : './src/scripts/app.js',
+	entry : path.resolve( __dirname, 'src/scripts/main.js' ),
 
 	output : {
 		filename : 'bundle.js',
@@ -17,22 +17,26 @@ module.exports = {
 				test : /\.jsx?$/,
 				loader : 'babel-loader',
 				exclude : /node_modules/
+			},
+			{
+				test : /\.vue$/,
+				loader : 'vue-loader'
 			}
 		]
 	},
 
 	resolve : {
-		modules : [
+
+		modules: [
 			path.resolve( './node_modules' ),
 			path.resolve( './src/scripts' )
 		],
-
-		extentions : [ '.js', '.jsx', '.json' ],
+		
+		extensions: [ '.js', '.vue', '.json' ],
 
 		alias: {
             vue : 'vue/dist/vue.min'
-        },
-
+        }
 	},
 
 	devtool : 'source-map',
@@ -43,6 +47,6 @@ module.exports = {
 		} )
 	],
 
-	watch : true
+	watch : false
 
 }
