@@ -1,0 +1,11 @@
+.DS_Store
+django_env/clients/vueClient/node_modules
+django_env/clients/reactClient/node_modules
+django_env/clients/vueClient/bin
+django_env/clients/reactClient/bin
+db.sqlite3
+virtual_env/
+__pycache__/
+*.log
+*.pot
+*.pyc
