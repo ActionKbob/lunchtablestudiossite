@@ -21,10 +21,6 @@ gulp.task( 'build-scripts', function(){
 		console.log( stats.toString() );
 	} );
 
-	// gulp.src( 'src/scripts/main.js' )
-	// 	.pipe( webpack( require( './webpack.config.js' ) ) )
-	// 	.pipe( gulp.dest( 'bin/resources/scripts' ) );
-
 } );
 
 gulp.task( 'build-styles', function(){
@@ -41,6 +37,7 @@ gulp.task( 'build-styles', function(){
 gulp.task( 'watch', function(){
 
 	gulp.watch( 'src/markup/**/*.html', [ 'build-markup' ] );
+	gulp.watch( 'src/styles/**/*.scss', [ 'build-styles' ] );
 
 } );
 
