@@ -1,14 +1,3 @@
-<template>
-	<div>
-		Blog page
-		<div>
-			<div v-for="post, i in posts">
-				{{ post.title }}
-			</div>
-		</div>
-	</div>
-</template>
-
 <script>
 	export default {
 
@@ -30,3 +19,14 @@
 
 	}
 </script>
+
+<template>
+	<div>
+		Blog page
+		<div>
+			<div v-for="post, i in posts">
+				{{ post.title }}
+			</div>
+		</div>
+	</div>
+</template>

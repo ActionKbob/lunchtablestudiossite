@@ -14,11 +14,11 @@ export default new VueRouter( {
 
 	routes : [
 
-		// {
-		// 	path : '*',
-		// 	name : '404',
-		// 	component : FOUROHFOUR
-		// },
+		{
+			path : '*',
+			name : '404',
+			component : FOUROHFOUR
+		},
 
 		{
 			path : '/',
